@@ -3,7 +3,6 @@ import UserModel from '../models/UserModel';
 import { IUserModel } from '../Interfaces/users/IUserModel';
 import { ServiceResponse } from '../Interfaces/ServiceResponse';
 import { jwtSign } from '../utils/jwt.util';
-import isValidEmail from '../utils/isValidEmail';
 
 export default class UserService {
   constructor(private userModel: IUserModel = new UserModel()) {}
@@ -11,7 +10,7 @@ export default class UserService {
   async login(email: string, password: string): Promise<ServiceResponse<{ token: string }>> {
     const user = await this.userModel.findUser(email);
 
-    if (!user || !isValidEmail(email)) {
+    if (!user) {
       return { status: 'UNAUTHORIZED', data: { message: 'Invalid email or password' } };
     }
 
