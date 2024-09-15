@@ -1,8 +1,9 @@
 import * as sinon from 'sinon';
 import * as chai from 'chai';
 import { expect } from 'chai';
+import { app } from '../app';
+// @ts-ignore
 import chaiHttp = require("chai-http")
-import { app } from '../src/app';
 
 
 
